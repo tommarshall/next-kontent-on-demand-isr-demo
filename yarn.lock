@@ -18,6 +18,11 @@
     url-parse "1.5.10"
     uuid "8.3.2"
 
+"@kentico/kontent-webhook-helper@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@kentico/kontent-webhook-helper/-/kontent-webhook-helper-1.2.0.tgz#e90eb4a9042997d6eb6e121142dbcd18f5d305cf"
+  integrity sha512-VDdb9wYxNjv197E9iZm4LFQJdOFE5BIyJ9ZIIPFACRiBvE+rK4s6i1w7j4mN0VTM3xqOjMbevFov5iGCkfKqHQ==
+
 "@next/env@12.1.6":
   version "12.1.6"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.1.6.tgz#5f44823a78335355f00f1687cfc4f1dafa3eca08"
