@@ -1,6 +1,6 @@
 # Next.js & Kontent On-Demand Incremental Static Regeneration (ISR) Demo
 
-A demo application showcasing how [Next.js on-demand incrementation static regeneration](<https://vercel.com/docs/concepts/next.js/incremental-static-regeneration#on-demand-revalidation-(beta)>) can be used in combination with [Kontent by Kentico](https://kontent.ai/) webhooks to revalidate pages when content changes are published.
+A demo application showcasing how [Next.js on-demand incrementation static regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation) can be used in combination with [Kontent by Kentico](https://kontent.ai/) webhooks to revalidate pages when content changes are published.
 
 This project is based on the official [Next.js `cms-kontent` example](https://github.com/vercel/next.js/tree/v12.1.6/examples/cms-kontent).
 
@@ -100,17 +100,17 @@ Refresh the corresponding post page in your browser and you should see your chan
 
 ### URL Slug Changes
 
-Next.js' `unstable_revalidate` requires a URL path to revalidate a page.
+Next.js' `revalidate()` requires a URL path to revalidate a page.
 
 Kontent's webhook requests do not contain any detail regarding the change, nor does the Delivery API allow us to ask for older versions of a content item.
 
-So if we change the URL slug of content item in Kontent, the webhook handler API route generates the URL path using the new URL slug value, which causes `unstable_revalidate` to error, as it cannot find a page to revalidate for that new path.
+So if we change the URL slug of content item in Kontent, the webhook handler API route generates the URL path using the new URL slug value, which causes `revalidate()` to error, as it cannot find a page to revalidate for that new path.
 
 If `fallback: true` or `fallback: blocking` is set for the page route then the page will be visible at the new path, but unless we set a `revalidate` duration for thge page route the page will continue to serve from the old path as well.
 
 ### Wider Revalidation
 
-Neither the [`pages/index.js`](./pages/index.js) nor the [`pages/posts/[slug].js`](./pages/posts/[slug].js) `getStaticProps` in this example declare a `revalidate` duration. This means Next.js will use the default value of `false` (no revalidation) and only revalidate the page on-demand, when `unstable_revalidate` is called.
+Neither the [`pages/index.js`](./pages/index.js) nor the [`pages/posts/[slug].js`](./pages/posts/[slug].js) `getStaticProps` in this example declare a `revalidate` duration. This means Next.js will use the default value of `false` (no revalidation) and only revalidate the page on-demand, when `revalidate()` is called.
 
 Currently, the [`api/revalidate.js`](./pages/api/revalidate.js) endpoint will only revalidate the immediate post page when a post is changed. That's fine for this proof-of-concept, but for production we'd need to consider that:
 
@@ -118,4 +118,4 @@ Currently, the [`api/revalidate.js`](./pages/api/revalidate.js) endpoint will on
 - Posts appear in the 'more stories' section on other post pages.
 - Author content might also change.
 
-To resolve this we'd either need to set a sensible `revalidate` duration for both the home and post page routes, or implement additional logic within the [`api/revalidate.js`](./pages/api/revalidate.js) endpoint to handle these cases via `unstable_revalidate`.
+To resolve this we'd either need to set a sensible `revalidate` duration for both the home and post page routes, or implement additional logic within the [`api/revalidate.js`](./pages/api/revalidate.js) endpoint to handle these cases via `revalidate()`.

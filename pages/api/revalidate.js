@@ -23,9 +23,7 @@ export default async function revalidate(req, res) {
 
   // revalidate the posts
   try {
-    await Promise.all(
-      pathsToRevalidate.map((path) => res.unstable_revalidate(path))
-    )
+    await Promise.all(pathsToRevalidate.map((path) => res.revalidate(path)))
     console.log(`[api/revalidate] revalidated: ${pathsToRevalidate.join(', ')}`)
 
     return res.status(200).json({ revalidated: true })
