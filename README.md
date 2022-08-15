@@ -1,14 +1,16 @@
 # Next.js & Kontent On-Demand Incremental Static Regeneration (ISR) Demo
 
-A demo application showcasing how [Next.js on-demand incrementation static regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation) can be used in combination with [Kontent by Kentico](https://kontent.ai/) webhooks to revalidate pages when content changes are published.
+A demo application showcasing how [Next.js on-demand incrementation static regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation) can be used in combination with [Kontent.ai](https://kontent.ai/) webhooks to revalidate pages when content changes are published.
 
 This project is based on the official [Next.js `cms-kontent` example](https://github.com/vercel/next.js/tree/v12.1.6/examples/cms-kontent).
+
+A full write up of on-demand ISR and the considerations for real world sites can be found on the Kontent.ai blog: [How to improve cache efficiency and reduce costs with Next.js on-demand ISR](https://kontent.ai/blog/leveraging-next-js-on-demand-isr/).
 
 ## Requirements
 
 - [Node.js](https://nodejs.org/en/download/)
 - [Yarn](https://yarnpkg.com/)
-- A [Kentico Kontent](https://kontent.ai/) account.
+- A [Kontent.ai](https://kontent.ai/) account.
 - An [ngrok](https://ngrok.com/) account (if working locally).
 
 ## Setup
